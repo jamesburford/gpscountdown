@@ -363,7 +363,7 @@ else  /* the hour is not between 0 and 24, so something is wrong */
 		var timer = undefined;
 
 		$(function() {
-			document.addEventListener('deviceready', function() {
+			//document.addEventListener('deviceready', function() {
 				$('#jsalarmclock select')[0].id = 'hour';
 				$('#jsalarmclock select')[1].id = 'minute';
 			
@@ -381,7 +381,7 @@ else  /* the hour is not between 0 and 24, so something is wrong */
 						selected: (new Date()).getMinutes() === i
 					}));
 				}
-			}, false);
+			//}, false);
 		});
 
 		function pad(num) {
@@ -390,13 +390,13 @@ else  /* the hour is not between 0 and 24, so something is wrong */
 
 		function alarmAction() {
 			//Alarm action goes here//
-			alert('Alarm action');
-			alert(JSON.stringify(cordova.plugins));
-			/*cordova.plugins.notification.local.schedule({
+			//alert('Alarm action');
+			//alert(JSON.stringify(cordova.plugins));
+			cordova.plugins.notification.local.schedule({
 				id: 1,
 				title: "Car parking nearly up",
 				text: "Car parking up in 10 minutes, use the app to make your way back to your vehicle.",
-			});*/
+			});
 		}
 		
 		$('#submitbutton').click(function(e) {
@@ -404,7 +404,7 @@ else  /* the hour is not between 0 and 24, so something is wrong */
 			$('#jsalarmclock select').attr('disabled','disabled');
 			timer = setInterval(function() {
 				var now = new Date();
-				if (now.getHours() == $('#hour').val() && now.getMinutes() == $('#minute').val() || true)
+				if (now.getHours() == $('#hour').val() && now.getMinutes() == $('#minute').val())
 				{
 					clearInterval(timer);
 					alarmAction();
